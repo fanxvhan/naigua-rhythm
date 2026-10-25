@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7e8d4" />
+  <title>奶蛙拍肚肚 · Belly Laugh Beat</title>
+  <meta name="description" content="一款会捧腹大笑的奶蛙四键音游。跟着节奏按 D F J K，听奶蛙哈哈笑到拍肚肚。" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true">
+    <div class="bg-blob bg-blob--pink"></div>
+    <div class="bg-blob bg-blob--mint"></div>
+    <div class="bg-blob bg-blob--butter"></div>
+    <div class="bg-dots"></div>
+    <div class="bg-cloud bg-cloud--one"></div>
+    <div class="bg-cloud bg-cloud--two"></div>
+    <div class="bg-sparkle bg-sparkle--one">✦</div>
+    <div class="bg-sparkle bg-sparkle--two">✧</div>
+    <div class="bg-sparkle bg-sparkle--three">✦</div>
+  </div>
+
+  <main class="app" id="app">
+    <!-- ==================== 开始界面 ==================== -->
+    <section class="screen menu-screen is-active" id="menuScreen" aria-label="奶蛙拍肚肚开始界面">
+      <header class="topline">
+        <div class="brand-stamp">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 42 42" role="presentation">
+              <path d="M14 8h14v5l3 4v18a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3V17l3-4V8Z" fill="#fff8ea" stroke="#6c493e" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M14 8h14v5H14z" fill="#ffcf75" stroke="#6c493e" stroke-width="2.4" stroke-linejoin="round"/>
+              <circle cx="17.5" cy="24" r="1.8" fill="#6c493e"/><circle cx="24.5" cy="24" r="1.8" fill="#6c493e"/>
+              <path d="M18 28.5c1.5 1.8 4.5 1.8 6 0" fill="none" stroke="#6c493e" stroke-width="1.8" stroke-linecap="round"/>
+              <ellipse cx="15" cy="27" rx="2.2" ry="1.2" fill="#ff9dad" opacity=".8"/><ellipse cx="27" cy="27" rx="2.2" ry="1.2" fill="#ff9dad" opacity=".8"/>
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>奶蛙事务所</strong><small>MILK &amp; LAUGH LAB</small></span>
+        </div>
+        <div class="topline-right">
+          <span class="tiny-sticker">4KEY RHYTHM</span>
+          <span class="vol-chip">VOL. 01</span>
+        </div>
+      </header>
+
+      <div class="menu-grid">
+        <div class="menu-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span>一种会笑出腹肌的节奏游戏<span class="eyebrow-dot"></span></p>
+          <h1 class="hero-title">
+            <span class="title-row title-row--one"><span class="title-word">奶蛙</span><span class="title-spark" aria-hidden="true">✶</span></span>
+            <span class="title-row title-row--two"><span class="title-word title-word--accent">拍肚肚</span><span class="title-scribble" aria-hidden="true">哈哈哈!</span></span>
+          </h1>
+          <p class="hero-lead">跟着奶盖气泡梦的节拍，把每一只奶瓶都接住。<br class="desk-br" />每一局落点随机，每按一次键，奶蛙就笑到捧着肚肚停不下来。</p>
+
+          <div class="howto" aria-label="游戏玩法">
+            <div class="howto-step">
+              <span class="howto-icon howto-icon--bottle" aria-hidden="true">🍼</span>
+              <span><b>01</b>看准随机落点</span>
+            </div>
+            <span class="howto-line" aria-hidden="true"></span>
+            <div class="howto-step">
+              <span class="howto-icon" aria-hidden="true"><kbd>D</kbd><kbd>F</kbd><kbd>J</kbd><kbd>K</kbd></span>
+              <span><b>02</b>按下奶蛙键</span>
+            </div>
+            <span class="howto-line" aria-hidden="true"></span>
+            <div class="howto-step">
+              <span class="howto-icon howto-icon--laugh" aria-hidden="true">哈哈哈</span>
+              <span><b>03</b>收获捧腹大笑</span>
+            </div>
+          </div>
+
+          <div class="setup-panel">
+            <div class="setup-heading">
+              <span class="setup-title">选个奶量</span>
+              <span class="setup-note" id="bestNote">奶蛙热身中…</span>
+            </div>
+            <div class="difficulty-picker" id="difficultyPicker" role="radiogroup" aria-label="选择难度">
+              <button class="difficulty-chip" type="button" data-difficulty="easy" role="radio" aria-checked="false">
+                <span class="chip-top"><span class="chip-name">小口抿</span><span class="chip-stars" aria-label="难度一星">★☆☆</span></span>
+                <span class="chip-sub">简单 · 慢慢来</span>
+              </button>
+              <button class="difficulty-chip is-selected" type="button" data-difficulty="normal" role="radio" aria-checked="true">
+                <span class="chip-top"><span class="chip-name">正常吨吨</span><span class="chip-stars" aria-label="难度二星">★★☆</span></span>
+                <span class="chip-sub">普通 · 刚刚好</span>
+              </button>
+              <button class="difficulty-chip" type="button" data-difficulty="hard" role="radio" aria-checked="false">
+                <span class="chip-top"><span class="chip-name">暴风吸入</span><span class="chip-stars" aria-label="难度三星">★★★</span></span>
+                <span class="chip-sub">困难 · 笑着冒汗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <button class="start-button" id="startButton" type="button">
+              <span class="start-button__icon" aria-hidden="true">▶</span>
+              <span class="start-button__copy"><strong>开始拍肚肚</strong><small>ENTER THE BELLY LAUGH</small></span>
+              <span class="start-button__arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="headphone-note"><span aria-hidden="true">🎧</span>建议开启声音<br /><span>戴上耳机，笑得更立体</span></p>
+          </div>
+        </div>
+
+        <div class="menu-art" aria-hidden="true">
+          <div class="art-halo">
+            <div class="art-halo__rings"></div>
+            <div class="art-doodle art-doodle--star">✦</div>
+            <div class="art-doodle art-doodle--heart">♥</div>
+            <div class="art-doodle art-doodle--note">♪</div>
+            <div class="hero-baby" id="heroBaby"></div>
+            <div class="belly-caption">“ 按这里，会笑 ♪ ”</div>
+            <div class="speech-bubble speech-bubble--laugh">咕<br />哈哈!<span class="speech-tail"></span></div>
+            <div class="speech-bubble speech-bubble--tickle">按我肚肚!</div>
+            <div class="art-badge art-badge--left"><span>D</span><small>奶糖</small></div>
+            <div class="art-badge art-badge--right"><span>K</span><small>紫薯</small></div>
+            <div class="tiny-milk-bottle">
+              <svg viewBox="0 0 70 108" role="presentation">
+                <path d="M22 10h26v15l7 11v58a8 8 0 0 1-8 8H23a8 8 0 0 1-8-8V36l7-11V10Z" fill="#fff9ee" stroke="#624238" stroke-width="3"/>
+                <path d="M22 10h26v12H22z" fill="#ffcf7a" stroke="#624238" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M22 38l-7 11v18h42V49l-7-11H22Z" fill="#b8e9d4" opacity=".85"/>
+                <circle cx="29" cy="65" r="2.1" fill="#624238"/><circle cx="41" cy="65" r="2.1" fill="#624238"/>
+                <path d="M30 71c2 2.5 6 2.5 8 0" fill="none" stroke="#624238" stroke-width="2" stroke-linecap="round"/>
+                <path d="M23 83h24" stroke="#ff9fb1" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+              </svg>
+            </div>
+            <div class="art-dashed-path"></div>
+          </div>
+          <div class="art-caption-row">
+            <span class="art-caption-dot art-caption-dot--pink"></span><span>奶糖</span>
+            <span class="art-caption-dot art-caption-dot--mint"></span><span>薄荷</span>
+            <span class="art-caption-dot art-caption-dot--butter"></span><span>布丁</span>
+            <span class="art-caption-dot art-caption-dot--grape"></span><span>紫薯</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="menu-footer">
+        <span>用键盘 <kbd>D</kbd><kbd>F</kbd><kbd>J</kbd><kbd>K</kbd> 或直接戳奶蛙</span>
+        <span class="footer-right">今天也要笑得很大声 <span aria-hidden="true">◡̈</span></span>
+      </footer>
+    </section>
+
+    <!-- ==================== 游戏界面 ==================== -->
+    <section class="screen game-screen" id="gameScreen" aria-label="游戏进行中">
+      <header class="game-hud">
+        <div class="hud-left">
+          <button class="icon-button" id="pauseButton" type="button" aria-label="暂停游戏">
+            <span class="pause-icon" aria-hidden="true"><i></i><i></i></span>
+          </button>
+          <div class="score-block">
+            <span class="hud-label">SCORE</span>
+            <strong id="scoreText">000000</strong>
+          </div>
+        </div>
+
+        <div class="song-panel">
+          <div class="song-topline">
+            <span class="song-now"><span class="song-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>奶盖气泡梦</span></span>
+            <span class="difficulty-tag" id="difficultyTag">正常吨吨</span>
+          </div>
+          <div class="progress-track" id="progressTrack" role="progressbar" aria-label="歌曲进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="progress-fill" id="progressFill"></span>
+            <span class="progress-marker" id="progressMarker" aria-hidden="true">✦</span>
+          </div>
+          <div class="song-subline">
+            <span>♪ 120 BPM · RANDOM CHART</span>
+            <span class="accuracy-line">ACC <b id="accuracyText">100.0%</b></span>
+          </div>
+        </div>
+
+        <div class="hud-right">
+          <div class="combo-mini">
+            <span class="hud-label">COMBO</span>
+            <strong id="comboText">0</strong>
+          </div>
+          <button class="icon-button" id="soundButton" type="button" aria-label="关闭声音" aria-pressed="true">
+            <svg class="sound-icon sound-icon--on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4V9Z" fill="currentColor"/><path d="M16 8.5c1.6 1 2.5 2.3 2.5 3.5s-.9 2.5-2.5 3.5M18.7 5.5c2.4 1.6 3.7 3.9 3.7 6.5s-1.3 4.9-3.7 6.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            <svg class="sound-icon sound-icon--off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4V9Z" fill="currentColor"/><path d="m16.5 9.5 5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="game-main">
+        <div class="stage" id="stage">
+          <div class="lane-bed" id="laneBed" aria-hidden="true"></div>
+          <canvas id="noteCanvas" aria-hidden="true"></canvas>
+          <div class="stage-vignette" aria-hidden="true"></div>
+          <div class="lane-tags" id="laneTags" aria-hidden="true"></div>
+          <div class="countdown" id="countdown" aria-live="polite"></div>
+          <div class="big-combo" id="bigCombo" aria-hidden="true">
+            <strong id="bigComboNumber">0</strong>
+            <span>COMBO</span>
+          </div>
+          <div class="judge-label" id="judgeLabel" aria-hidden="true"></div>
+          <div class="center-toast" id="centerToast" aria-live="polite"></div>
+          <div class="stage-tip" id="stageTip">按 D F J K 接住奶瓶</div>
+        </div>
+
+        <div class="keypad" id="keypad" role="group" aria-label="奶蛙键位"></div>
+      </div>
+
+      <div class="pause-overlay" id="pauseOverlay" hidden>
+        <div class="pause-card" role="dialog" aria-modal="true" aria-labelledby="pauseTitle">
+          <div class="pause-baby" id="pauseBaby" aria-hidden="true"></div>
+          <p class="eyebrow eyebrow--small">PAUSE FOR MILK</p>
+          <h2 id="pauseTitle">奶蛙喝口奶，<br />马上回来！</h2>
+          <p class="pause-copy">节拍会停在原地等你，放心喘口气。</p>
+          <div class="pause-actions">
+            <button class="primary-mini" id="resumeButton" type="button">继续拍肚肚</button>
+            <button class="ghost-mini" id="restartButton" type="button">重新开始</button>
+            <button class="ghost-mini" id="quitButton" type="button">回到首页</button>
+          </div>
+          <p class="pause-hint">按 <kbd>ESC</kbd> 也能继续</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 结算界面 ==================== -->
+    <section class="screen result-screen" id="resultScreen" aria-label="本局结算">
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+      <div class="result-shell">
+        <header class="result-header">
+          <span class="brand-copy"><strong>奶蛙事务所</strong><small>BELLY REPORT</small></span>
+          <span class="result-song">♪ 奶盖气泡梦 <i id="resultDiffPill">普通</i></span>
+        </header>
+        <div class="result-card">
+          <div class="rank-halo" id="rankHalo" aria-hidden="true"><span class="rank-star rank-star--one">✦</span><span class="rank-star rank-star--two">✦</span><span class="rank-star rank-star--three">✧</span></div>
+          <div class="result-main">
+            <div class="rank-column">
+              <div class="rank-badge" id="rankBadge" data-rank="S"><span class="rank-eyebrow">本次奶量</span><strong id="rankLetter">S</strong><span class="rank-sub">RANK</span></div>
+              <div class="rank-stamp" id="rankStamp">奶蛙认证</div>
+            </div>
+            <div class="result-content">
+              <p class="eyebrow eyebrow--small">BELLY LAUGH REPORT · <span id="resultDate">TODAY</span></p>
+              <h2 id="resultTitle">笑得非常标准！</h2>
+              <p class="result-copy" id="resultCopy">奶蛙表示：这一轮肚肚拍得很舒服。</p>
+              <div class="result-score-row">
+                <div class="result-score"><span>总分</span><strong id="finalScore">000000</strong></div>
+                <div class="new-record" id="newRecord" hidden>NEW · 新纪录!</div>
+              </div>
+              <div class="result-stats">
+                <div class="stat-box stat-box--perfect"><span>PERFECT</span><strong id="perfectCount">0</strong></div>
+                <div class="stat-box stat-box--great"><span>GREAT</span><strong id="greatCount">0</strong></div>
+                <div class="stat-box stat-box--good"><span>GOOD</span><strong id="goodCount">0</strong></div>
+                <div class="stat-box stat-box--miss"><span>MISS</span><strong id="missCount">0</strong></div>
+              </div>
+              <div class="result-extra">
+                <span>最大连击 <b id="maxComboText">0</b></span>
+                <span>准确率 <b id="finalAccuracy">0.0%</b></span>
+                <span>笑声次数 <b id="laughCount">0</b></span>
+              </div>
+              <div class="result-actions">
+                <button class="start-button start-button--result" id="replayButton" type="button">
+                  <span class="start-button__icon" aria-hidden="true">↻</span>
+                  <span class="start-button__copy"><strong>再笑一次</strong><small>ONE MORE BELLY LAUGH</small></span>
+                  <span class="start-button__arrow" aria-hidden="true">→</span>
+                </button>
+                <button class="ghost-mini ghost-mini--result" id="homeButton" type="button">回到首页</button>
+              </div>
+            </div>
+            <div class="result-baby" id="resultBaby" aria-hidden="true"></div>
+          </div>
+          <div class="result-footer-note">“ 笑声已存档，肚肚正在恢复中 ”</div>
+        </div>
+        <p class="result-tip">按 <kbd>R</kbd> 再笑一次 · 按 <kbd>ESC</kbd> 回首页</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="sr-only" aria-live="polite" id="liveStatus"></div>
+
+  <script src="assets.js"></script>
+  <script src="babies.js"></script>
+  <script src="audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
